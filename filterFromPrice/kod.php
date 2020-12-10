@@ -1,7 +1,7 @@
 <?php
 
 $user = "root";
-$pass = "";
+$pass = "root";
 $host = "localhost";
 $dbname = "pricelist";
 try {
@@ -33,15 +33,9 @@ if(isset($_POST['input5'])){
 if(!preg_match("|^[\d]*$|", $_POST['input5'])){
 echo "Введите целое число в поле 'количество'!";
 }
-if( $t5 = " "){
-$q = "";
 }
-else {
- $q = " AND (stock_availability1 $t4 $t5 OR stock_availability2 $t4 $t5)";
-}}
 
-$query2 = "SELECT * FROM price2 WHERE $t1 BETWEEN $t2 AND $t3 $q";
-//$query2 = "SELECT * FROM price2 WHERE $t1 BETWEEN $t2 AND $t3 AND (stock_availability1 $t4 $t5 OR stock_availability2 $t4 $t5)";
+$query2 = "SELECT * FROM price2 WHERE $t1 BETWEEN $t2 AND $t3 AND (stock_availability1 $t4 $t5 OR stock_availability2 $t4 $t5)";
 $res = $pdo->prepare($query2);
 $res->execute();
 

@@ -34,7 +34,7 @@
 
 <div id="table"	>
 <?php
-$mysqli = new mysqli("localhost", "root", "", "pricelist");
+$mysqli = new mysqli("localhost", "root", "root", "pricelist");
 $query = "SELECT * FROM price2";
 $query_res = mysqli_query($mysqli, $query);
 
@@ -68,19 +68,19 @@ if($query_res) {
 				echo ("<td>$row[country]</td>");
 				
 				//если товара на складе мало - вывести предупреждение
-				if($row[stock_availability1]<= 20 || $row[stock_availability2]<= 20){
-					$row[note] = $note_text;
+				if($row['stock_availability1']<= 20 || $row['stock_availability2']<= 20){
+					$row['note'] = $note_text;
 					echo ("<td>$row[note]</td>");
 					}
 					else {
 				echo ("<td>$row[note]</td>");
 		}
 		
-		$sum1 += $row[stock_availability1];
-		$sum2 += $row[stock_availability2];
+		$sum1 += $row['stock_availability1'];
+		$sum2 += $row['stock_availability2'];
 		
-		$cost_rozn += $row[cost];
-		$cost_opt += $row[cost_opt];
+		$cost_rozn += $row['cost'];
+		$cost_opt += $row['cost_opt'];
 		$i++;
         
 		echo("</tr>");
